@@ -27,6 +27,9 @@ build/Release
 node_modules/
 package-lock.json
 
+#build dir
+build
+
 # Optional npm cache directory
 .npm
 
