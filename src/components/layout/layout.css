@@ -1,4 +1,76 @@
+@import './variables.css';
 
-.layout {
+.grid-col-item-1 {
+  width: var(--ui-navigation-width);
   background: red;
+}
+
+.grid-col-item-2 {
+  min-height: 100vh;
+  position: relative;
+  background: #e3e3e3;
+  padding: calc(43px + 1rem) 1rem 6.5rem;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.5s;
+
+  &::after {
+    opacity: 0;
+    transition: opacity 0.5s;
+    will-change: opacity;
+  }
+}
+
+.grid-row {
+  position: relative;
+  overflow: hidden;
+}
+
+.active {
+  & .grid-col-item-2 {
+    transform: translate3d(var(--ui-navigation-width), 0, 0);
+
+    &::after {
+      opacity: 1;
+      cursor: pointer;
+      content: '';
+      position: absolute;
+      background: rgba(0, 0, 0, 0.3);
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+@media (--break-tablet-landscape) {
+  .grid-row {
+    display: flex;
+  }
+
+  .grid-col-item-2 {
+    position: static;
+    height: auto;
+    background: transparent;
+    transition: none;
+    width: calc(100% - var(--ui-navigation-width));
+    padding: 1rem 1rem 3rem;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .active {
+    & .grid-col-item-2 {
+      transform: none;
+    }
+  }
+}
+
+@media (--break-desktop) {
+  .grid-col-item-2 {
+    padding: 1rem 4.7rem;
+  }
 }

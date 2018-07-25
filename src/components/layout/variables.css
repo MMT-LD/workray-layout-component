@@ -1,0 +1,18 @@
+:root {
+  --mobile: 20em;
+  --mobile-landscape: 30em;
+  --tablet-portrait: 48em;
+  --tablet-landscape: 64em;
+  --desktop: 80em;
+  --desktop-medium: 90em;
+
+  @custom-media --break-mobile (min-width: 20rem);
+  @custom-media --break-mobile-landscape (min-width: 30rem);
+  @custom-media --break-tablet-portrait (min-width: 48rem);
+  @custom-media --break-tablet-landscape (min-width: 64rem);
+  @custom-media --break-desktop (min-width: 80rem);
+  @custom-media --break-desktop-medium (min-width: 90rem);
+
+  --ui-navigation-bg-colour: #38243f;
+  --ui-navigation-width: 252px;
+}
