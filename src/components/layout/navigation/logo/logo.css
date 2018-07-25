@@ -1,0 +1,15 @@
+@import '../../variables.css';
+
+.logo-link {
+  display: block;
+  background: 0 0;
+  padding: 22px 17px;
+
+  &.with-shadow {
+    box-shadow: -1px 2px 1px -1px #472a4e;
+  }
+}
+
+.logo-image {
+  width: 150px;
+}

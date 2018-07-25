@@ -1,6 +1,8 @@
 import React, { Children, Component, cloneElement, createRef } from 'react';
 import classNames from 'classnames';
 import Footer from './footer';
+import Header from './header';
+import { Navigation, HandheldNavigationContainer } from './navigation';
 
 const navigation = [
   {
@@ -59,12 +61,17 @@ class Layout extends Component {
           })}
         >
           <div className={styles['grid-col-item-1']}>
-            <p>sdsdsd</p>
+            <Header>
+              <HandheldNavigationContainer
+                active={active}
+                trigger={this.toggle}
+              />
+              <Navigation items={navigation} trigger={this.toggle} {...rest} />
+            </Header>
           </div>
           <div
             className={styles['grid-col-item-2']}
             onClick={evt => active && this.toggle(evt)}
-            ref={this.scrollContainer}
           >
             <div>{children}</div>
             <Footer link="https://www.workray.com/en/terms" />

@@ -1,0 +1,5 @@
+:root {
+  --ui-navigation-bg-colour: #38243f;
+  --ui-navigation-bg-active-colour: rgba(255, 255, 255, 0.15);
+  --ui-navigation-font-colour: #fff;
+}

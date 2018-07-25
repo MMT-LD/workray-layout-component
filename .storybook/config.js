@@ -6,7 +6,7 @@ import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
 addDecorator((story) => (
-  <div style={{padding: 20}}>
+  <div>
     {story()}
   </div>
 ));
