@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavigationItem from './navigation-item';
 import NavigationLogo from '../logo';
 import SROnly from '../../../sr-only';
 // import AccountInformation from '../account';
 
-const Navigation = ({ children, trigger, items, styles, user }) => (
+const Navigation = ({ trigger, items, styles, user }) => (
   <nav className={styles.navigation}>
-    {console.log('reer', user)}
     <NavigationLogo
       src="https://www.workray.com/images/workray.svg"
       url="https://www.workray.com/en/dashboard"
@@ -37,14 +37,31 @@ const Navigation = ({ children, trigger, items, styles, user }) => (
       </ul>
     )}
     {/*user.data[0] && (
-      <LinkElement
-        url={'https://www.workray.com/en/dashboard/settings'}
+      <a
+        href={'https://www.workray.com/en/dashboard/settings'}
         className={`${styles['link-account']} ${styles.link}`}
       >
         <AccountInformation user={user.data[0]} />
-      </LinkElement>
+      </a>
     )*/}
   </nav>
 );
+
+Navigation.propTypes = {
+  styles: PropTypes.shape({}),
+  className: PropTypes.string,
+  active: PropTypes.bool,
+  trigger: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  user: PropTypes.shape({}),
+};
+
+Navigation.defaultProps = {
+  styles: {},
+  className: '',
+  active: false,
+  user: {},
+  trigger: () => {},
+};
 
 export default Navigation;

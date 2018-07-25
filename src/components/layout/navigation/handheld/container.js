@@ -1,9 +1,9 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import flowRight from 'lodash.flowright';
 import HandheldNavigation from './navigation';
 import withScrollPosition from '../../../../hoc/with-scroll-position';
-import flowRight from 'lodash.flowright';
 
 class HandheldNavigationContainer extends Component {
   state = {
@@ -25,8 +25,9 @@ class HandheldNavigationContainer extends Component {
       scroll: { scrollY },
     } = this.props;
     const { isFixed } = this.state;
+    const { active } = this.props;
 
-    if (scrollY === prevScrollY || this.props.active) return;
+    if (scrollY === prevScrollY || active) return;
 
     if (prevScrollY > scrollY) return this.update(false);
 
@@ -40,13 +41,15 @@ class HandheldNavigationContainer extends Component {
   }
 
   render() {
+    const { isFixed } = this.state;
+    const { styles, active, className } = this.props;
     return (
       <div
         ref={this.menu}
-        className={classNames(this.props.className, {
-          [`${this.props.styles.handheld}`]: true,
-          [`${this.props.styles['is-active']}`]: this.state.isFixed,
-          [`${this.props.styles['active']}`]: this.props.active,
+        className={classNames(className, {
+          [`${styles.handheld}`]: true,
+          [`${styles['is-active']}`]: isFixed,
+          [`${styles['active']}`]: active,
         })}
       >
         <HandheldNavigation {...this.props} />
@@ -54,5 +57,18 @@ class HandheldNavigationContainer extends Component {
     );
   }
 }
+
+HandheldNavigationContainer.propTypes = {
+  styles: PropTypes.shape({}),
+  scroll: PropTypes.shape({ scrollY }).isRequired,
+  className: PropTypes.string,
+  active: PropTypes.bool,
+};
+
+HandheldNavigationContainer.defaultProps = {
+  styles: {},
+  className: '',
+  active: false,
+};
 
 export default flowRight([withScrollPosition])(HandheldNavigationContainer);

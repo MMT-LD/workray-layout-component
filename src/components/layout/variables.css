@@ -13,6 +13,7 @@
   @custom-media --break-desktop (min-width: 80rem);
   @custom-media --break-desktop-medium (min-width: 90rem);
 
+  --white: #fff;
   --ui-navigation-bg-colour: #38243f;
   --ui-navigation-width: 252px;
 }

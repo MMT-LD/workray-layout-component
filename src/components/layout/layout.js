@@ -1,41 +1,9 @@
 import React, { Children, Component, cloneElement, createRef } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import Footer from './footer';
 import Header from './header';
 import { Navigation, HandheldNavigationContainer } from './navigation';
-
-const navigation = [
-  {
-    item: 'Dashboard',
-    active: false,
-    url: 'https://www.workray.com/en/dashboard',
-  },
-  {
-    item: 'Jobs',
-    active: false,
-    url: 'https://www.workray.com/en/dashboard/jobs',
-  },
-  {
-    item: 'Applications',
-    active: false,
-    url: 'https://www.workray.com/en/dashboard/applications',
-  },
-  {
-    item: 'Career Advice',
-    active: true,
-    url: 'https://www.workray.com/en/dashboard/careeradvice',
-  },
-  {
-    item: 'Services',
-    active: false,
-    url: 'https://www.workray.com/en/dashboard/services',
-  },
-  {
-    item: 'Activity',
-    active: false,
-    url: 'https://www.workray.com/en/dashboard/activity',
-  },
-];
 
 class Layout extends Component {
   state = {
@@ -51,7 +19,7 @@ class Layout extends Component {
 
   render() {
     const { active } = this.state;
-    const { children, styles, ...rest } = this.props;
+    const { children, styles, navigation, ...rest } = this.props;
     return (
       <div className={styles['container']}>
         <div
@@ -81,5 +49,15 @@ class Layout extends Component {
     );
   }
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  styles: PropTypes.shape({}),
+  navigation: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+Layout.defaultProps = {
+  styles: {},
+};
 
 export default Layout;

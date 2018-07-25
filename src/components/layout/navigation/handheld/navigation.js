@@ -1,6 +1,7 @@
 import React from 'react';
-import NavigationLogo from '../logo';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import NavigationLogo from '../logo';
 import SROnly from '../../../sr-only';
 
 const HandheldNavigation = ({
@@ -27,5 +28,19 @@ const HandheldNavigation = ({
     />
   </nav>
 );
+
+HandheldNavigation.propTypes = {
+  styles: PropTypes.shape({}),
+  className: PropTypes.string,
+  active: PropTypes.bool,
+  trigger: PropTypes.func,
+};
+
+HandheldNavigation.defaultProps = {
+  styles: {},
+  className: '',
+  active: false,
+  trigger: () => {},
+};
 
 export default HandheldNavigation;
